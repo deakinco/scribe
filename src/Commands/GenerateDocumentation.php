@@ -28,9 +28,7 @@ class GenerateDocumentation extends Command
      *
      * @var string
      */
-    protected $signature = "scribe:generate
-                            {--force: Discard any changes you've made to the Markdown files}
-    ";
+    protected $signature = "scribe:generate";
 
     /**
      * The console command description.
@@ -71,7 +69,7 @@ class GenerateDocumentation extends Command
                 return $group->first()['metadata']['groupName'];
             }, SORT_NATURAL);
 
-        $writer = new Writer($this->docConfig, $this->option('force'));
+        $writer = new Writer($this->docConfig);
         $writer->writeDocs($groupedRoutes);
     }
 
